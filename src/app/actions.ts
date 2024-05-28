@@ -12,8 +12,9 @@ export async function summary(input: string, language: string = "en") {
 
   (async () => {
     const { partialObjectStream } = await streamObject({
-      model: openai("gpt-3.5-turbo"),
-      prompt: `Summarry this book: ${input}. Return the output with the ${language} language.`,
+      model: openai("gpt-4o-2024-05-13"),
+      prompt:
+        `Summarry this book: ${input}. Return the output with the ${language} language.`,
       schema: outputSchema,
     });
 

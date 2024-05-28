@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
-import { Reddit_Mono } from "next/font/google";
+import { Roboto_Slab } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import Providers from "./providers";
 
-const redditmono = Reddit_Mono({
+const robotoslab = Roboto_Slab({
   subsets: ["latin"],
+  weight: "400",
 });
 
 export const metadata: Metadata = {
@@ -23,7 +24,7 @@ export default function RootLayout({
       <body
         className={cn(
           "min-h-screen bg-background antialiased",
-          redditmono.className
+          robotoslab.className
         )}
       >
         <Providers>{children}</Providers>

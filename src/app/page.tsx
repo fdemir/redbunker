@@ -15,7 +15,7 @@ export default function Home() {
 
   const handleGeneration = (data: GenerationReturnType) => {
     try {
-      setOutput(JSON.parse(data));
+      setOutput(JSON.parse(data as string));
     } catch (error) {}
   };
 
@@ -27,10 +27,20 @@ export default function Home() {
 
       {item && (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto p-4 md:p-8">
-          <div className="space-y-4">
+          <div className="space-y-4 md:order-1 order-2">
             <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-50">
               {item?.volumeInfo.title}
             </h1>
+
+            <div className="space-y-2">
+              <h2 className="text-xl font-semibold text-gray-800 dark:text-gray-200">
+                Summary
+              </h2>
+              <p className="text-gray-700 dark:text-gray-400">
+                {output?.summary?.summary}
+              </p>
+            </div>
+
             <div className="space-y-2">
               <h2 className="text-xl font-semibold text-gray-800 dark:text-gray-200">
                 Key Highlights
@@ -41,16 +51,19 @@ export default function Home() {
                 ))}
               </ul>
             </div>
+
             <div className="space-y-2">
               <h2 className="text-xl font-semibold text-gray-800 dark:text-gray-200">
-                Summary
+                Fun Facts
               </h2>
-              <p className="text-gray-700 dark:text-gray-400">
-                {output?.summary?.summary}
-              </p>
+              <ul className="list-disc pl-6 space-y-2 text-gray-700 dark:text-gray-400">
+                {output?.summary?.funfacts?.map((point, index) => (
+                  <li key={index}>{point}</li>
+                ))}
+              </ul>
             </div>
           </div>
-          <div className="space-y-4">
+          <div className="space-y-4 md:order-2 order-1">
             <div className="flex items-center">
               {item?.volumeInfo.imageLinks?.thumbnail ? (
                 <Image
