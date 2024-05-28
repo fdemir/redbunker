@@ -5,6 +5,8 @@ import { openai } from "@ai-sdk/openai";
 import { createStreamableValue } from "ai/rsc";
 import { outputSchema } from "./schema";
 
+export const dynamic = "force-dynamic";
+
 export async function summary(input: string, language: string = "en") {
   "use server";
 
