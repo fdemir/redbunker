@@ -7,6 +7,8 @@ import { outputSchema } from "./schema";
 import { Item } from "./_components/search/type";
 import Image from "next/image";
 
+export const runtime = "edge";
+
 type GenerationReturnType = Partial<z.infer<typeof outputSchema>>;
 
 export default function Home() {
